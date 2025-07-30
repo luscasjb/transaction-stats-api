@@ -3,6 +3,7 @@ package com.example.transactionapi.service;
 import com.example.transactionapi.dto.StatisticsResponse;
 import com.example.transactionapi.repository.TransactionRepository;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
@@ -13,11 +14,13 @@ import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
+@Slf4j
 public class StatisticsService {
 
     private final TransactionRepository transactionRepository;
 
     public StatisticsResponse getStatistics() {
+        log.info("Calculating statistics for the last 60 seconds.");
         OffsetDateTime sixtySecondsAgo = OffsetDateTime.now().minusSeconds(60);
 
         DoubleSummaryStatistics stats = transactionRepository.findAll().stream()
