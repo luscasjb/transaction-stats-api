@@ -1,7 +1,7 @@
-package com.example.transactionapi.controller;
+package com.devchallenge.transactionapi.controller;
 
-import com.example.transactionapi.dto.ErrorResponse;
-import com.example.transactionapi.dto.ValidationError;
+import com.devchallenge.transactionapi.dto.ErrorResponse;
+import com.devchallenge.transactionapi.dto.ValidationError;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.MethodArgumentNotValidException;

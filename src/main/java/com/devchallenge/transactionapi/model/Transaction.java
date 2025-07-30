@@ -1,4 +1,4 @@
-package com.example.transactionapi.model;
+package com.devchallenge.transactionapi.model;
 
 import lombok.Data;
 import lombok.AllArgsConstructor;

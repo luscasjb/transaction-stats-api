@@ -1,7 +1,7 @@
-package com.example.transactionapi.controller;
+package com.devchallenge.transactionapi.controller;
 
-import com.example.transactionapi.dto.TransactionRequest;
-import com.example.transactionapi.service.TransactionService;
+import com.devchallenge.transactionapi.dto.TransactionRequest;
+import com.devchallenge.transactionapi.service.TransactionService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;

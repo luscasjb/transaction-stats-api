@@ -1,4 +1,4 @@
-package com.example.transactionapi.dto;
+package com.devchallenge.transactionapi.dto;
 
 import java.math.BigDecimal;
 

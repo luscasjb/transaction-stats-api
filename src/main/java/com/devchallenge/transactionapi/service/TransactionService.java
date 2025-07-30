@@ -1,8 +1,8 @@
-package com.example.transactionapi.service;
+package com.devchallenge.transactionapi.service;
 
-import com.example.transactionapi.dto.TransactionRequest;
-import com.example.transactionapi.model.Transaction;
-import com.example.transactionapi.repository.TransactionRepository;
+import com.devchallenge.transactionapi.dto.TransactionRequest;
+import com.devchallenge.transactionapi.model.Transaction;
+import com.devchallenge.transactionapi.repository.TransactionRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;

@@ -1,7 +1,7 @@
-package com.example.transactionapi.controller;
+package com.devchallenge.transactionapi.controller;
 
-import com.example.transactionapi.dto.StatisticsResponse;
-import com.example.transactionapi.service.StatisticsService;
+import com.devchallenge.transactionapi.dto.StatisticsResponse;
+import com.devchallenge.transactionapi.service.StatisticsService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;

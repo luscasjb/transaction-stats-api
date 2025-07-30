@@ -1,6 +1,6 @@
-package com.example.transactionapi.repository;
+package com.devchallenge.transactionapi.repository;
 
-import com.example.transactionapi.model.Transaction;
+import com.devchallenge.transactionapi.model.Transaction;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;

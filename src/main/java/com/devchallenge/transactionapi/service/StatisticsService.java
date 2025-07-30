@@ -1,7 +1,7 @@
-package com.example.transactionapi.service;
+package com.devchallenge.transactionapi.service;
 
-import com.example.transactionapi.dto.StatisticsResponse;
-import com.example.transactionapi.repository.TransactionRepository;
+import com.devchallenge.transactionapi.dto.StatisticsResponse;
+import com.devchallenge.transactionapi.repository.TransactionRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
