@@ -4,6 +4,7 @@ import com.example.transactionapi.dto.StatisticsResponse;
 import com.example.transactionapi.repository.TransactionRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
@@ -19,12 +20,15 @@ public class StatisticsService {
 
     private final TransactionRepository transactionRepository;
 
+    @Value("${statistics.time-window-seconds}")
+    private long timeWindowSeconds;
+
     public StatisticsResponse getStatistics() {
-        log.info("Calculating statistics for the last 60 seconds.");
-        OffsetDateTime sixtySecondsAgo = OffsetDateTime.now().minusSeconds(60);
+        log.info("Calculating statistics for the last {} seconds.", timeWindowSeconds);
+        OffsetDateTime limitDateTime = OffsetDateTime.now().minusSeconds(timeWindowSeconds);
 
         DoubleSummaryStatistics stats = transactionRepository.findAll().stream()
-                .filter(t -> t.getDataHora().isAfter(sixtySecondsAgo))
+                .filter(t -> t.getDataHora().isAfter(limitDateTime))
                 .collect(Collectors.summarizingDouble(t -> t.getValor().doubleValue()));
 
         if (stats.getCount() == 0) {
