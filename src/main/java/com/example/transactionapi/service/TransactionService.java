@@ -16,4 +16,8 @@ public class TransactionService {
         Transaction transaction = new Transaction(request.valor(), request.dataHora());
         repository.save(transaction);
     }
+
+    public void deleteAllTransactions() {
+        repository.deleteAll();
+    }
 }
