@@ -24,6 +24,7 @@ public class StatisticsService {
     private long timeWindowSeconds;
 
     public StatisticsResponse getStatistics() {
+        long startTime = System.nanoTime();
         log.info("Calculating statistics for the last {} seconds.", timeWindowSeconds);
         OffsetDateTime limitDateTime = OffsetDateTime.now().minusSeconds(timeWindowSeconds);
 
@@ -31,16 +32,23 @@ public class StatisticsService {
                 .filter(t -> t.getDataHora().isAfter(limitDateTime))
                 .collect(Collectors.summarizingDouble(t -> t.getValor().doubleValue()));
 
+        StatisticsResponse response;
         if (stats.getCount() == 0) {
-            return new StatisticsResponse(0L, BigDecimal.ZERO, BigDecimal.ZERO, BigDecimal.ZERO, BigDecimal.ZERO);
+            response = new StatisticsResponse(0L, BigDecimal.ZERO, BigDecimal.ZERO, BigDecimal.ZERO, BigDecimal.ZERO);
+        } else {
+            response = new StatisticsResponse(
+                    stats.getCount(),
+                    BigDecimal.valueOf(stats.getSum()).setScale(2, RoundingMode.HALF_UP),
+                    BigDecimal.valueOf(stats.getAverage()).setScale(2, RoundingMode.HALF_UP),
+                    BigDecimal.valueOf(stats.getMin()).setScale(2, RoundingMode.HALF_UP),
+                    BigDecimal.valueOf(stats.getMax()).setScale(2, RoundingMode.HALF_UP)
+            );
         }
 
-        return new StatisticsResponse(
-                stats.getCount(),
-                BigDecimal.valueOf(stats.getSum()).setScale(2, RoundingMode.HALF_UP),
-                BigDecimal.valueOf(stats.getAverage()).setScale(2, RoundingMode.HALF_UP),
-                BigDecimal.valueOf(stats.getMin()).setScale(2, RoundingMode.HALF_UP),
-                BigDecimal.valueOf(stats.getMax()).setScale(2, RoundingMode.HALF_UP)
-        );
+        long endTime = System.nanoTime();
+        long durationMillis = (endTime - startTime) / 1_000_000;
+        log.info("Statistics calculation finished in {} ms. Found {} transactions.", durationMillis, stats.getCount());
+
+        return response;
     }
 }
