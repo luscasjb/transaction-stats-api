@@ -14,10 +14,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/estatistica")
+@RequestMapping("/statistics")
 @RequiredArgsConstructor
 @Tag(name = "Statistics", description = "Endpoint for retrieving transaction statistics")
-public class StatisticsController {
+public class StatisticsController { 
 
     private final StatisticsService service;
 
