@@ -97,6 +97,6 @@ Once the application is running (using either method), you can access the intera
 
 ### Available Endpoints
 
-- `POST /transacao`: Creates a new transaction.
-- `DELETE /transacao`: Deletes all transactions.
-- `GET /estatistica`: Returns statistics for transactions in the last configured time window.
+- `POST /transactions`: Creates a new transaction.
+- `DELETE /transactions`: Deletes all transactions.
+- `GET /statistics`: Returns statistics for transactions in the last configured time window.
